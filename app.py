@@ -11,7 +11,7 @@ model = load("xg_model.joblib")
 stellar = pd.read_csv("star_classification.csv")
 
 if "obj_ID" in stellar.columns.values:
-    stellar.drop(["obj_ID", "run_ID", "rerun_ID", "cam_col", "field_ID", "spec_obj_ID"], axis=1, inplace=True)
+    stellar.drop(["obj_ID", "run_ID", "rerun_ID", "cam_col", "field_ID", "spec_obj_ID","MJD","fiber_ID"], axis=1, inplace=True)
 
 # Drop the target variable
 X = stellar.drop(['class'], axis=1)

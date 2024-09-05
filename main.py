@@ -11,7 +11,7 @@ from sklearn.metrics import precision_recall_fscore_support
 stellar = pd.read_csv("star_classification.csv")
 
 # Drop unnecessary columns if they exist
-columns_to_drop = ["obj_ID", "run_ID", "rerun_ID", "cam_col", "field_ID", "spec_obj_ID"]
+columns_to_drop = ["obj_ID", "run_ID", "rerun_ID", "cam_col", "field_ID", "spec_obj_ID","MJD","fiber_ID"]
 stellar.drop(columns=[col for col in columns_to_drop if col in stellar.columns], axis=1, inplace=True)
 
 # Encode the target variable
@@ -23,7 +23,7 @@ X = stellar.drop('class', axis=1)
 y = stellar['class']
 
 # Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.75, random_state=150)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.70, random_state=150)
 
 # Initialize the model
 model = XGBClassifier(n_estimators=100, learning_rate=0.01)
